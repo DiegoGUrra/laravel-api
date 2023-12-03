@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Purchase extends Model
 {
+    
     use HasFactory;
+
+    protected $fillable = [
+        'customer_id',
+        'event_id',
+        'quantity',
+        'purchase_date',
+    ];
+    public function customer() {
+        return $this->belongsTo(Customer::class);
+    }
 }
