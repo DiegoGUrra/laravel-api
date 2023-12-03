@@ -151,3 +151,7 @@ Y aquí un orders con id de customer invalido.
 
 Video de la ejecución: https://drive.google.com/file/d/1YMJtKLEcd0beI9mxV0pbY3e5XKoXOVz5/view?usp=drive_link
 
+
+## Postman
+
+[API Collection.postman_collection.json](https://github.com/DiegoGUrra/laravel-api/blob/master/API%20Collection.postman_collection.json)
