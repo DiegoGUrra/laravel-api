@@ -15,6 +15,7 @@ class EventResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        // Log::debug($request->getPathInfo());
         $data = [
             'id'=>$this->id,
             'name'=>$this->name,
@@ -22,7 +23,7 @@ class EventResource extends JsonResource
             'venue'=>$this->venue,
             'ticketPrice'=>$this->ticket_price,
         ];
-        if ($request->getPathInfo() != '/api/events') {
+        if (substr($request->getPathInfo(),0,11) == '/api/event/') {
             Log::debug('pasó');
             $data['description'] = $this->description;
         }
