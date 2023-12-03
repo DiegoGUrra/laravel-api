@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StorepurchaseRequest;
-use App\Http\Requests\UpdatepurchaseRequest;
-use App\Models\purchase;
+use App\Http\Requests\StorePurchaseRequest;
+use App\Http\Requests\UpdatePurchaseRequest;
+use App\Http\Resources\PurchaseResource;
+use App\Models\Purchase;
+use Illuminate\Support\Facades\Log;
+
 
 class PurchaseController extends Controller
 {
@@ -27,9 +30,11 @@ class PurchaseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorepurchaseRequest $request)
+    public function store(StorePurchaseRequest $request)
     {
-        //
+        Log::debug($request->toArray());
+        Log::debug($request->all());
+        return new PurchaseResource(Purchase::create($request->all()));
     }
 
     /**

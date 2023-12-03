@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Http\Resources\CustomerCollection;
+use App\Http\Resources\CustomerResource;
 use App\Models\Customer;
+use Illuminate\Http\Response;
+
 
 class CustomerController extends Controller
 {
@@ -36,9 +39,13 @@ class CustomerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Customer $customer)
+    public function show($id)
     {
-        //
+        $customer = Customer::find($id);
+        if (!$customer) {
+            return response()->json(['error' => 'Orders not found'], Response::HTTP_NOT_FOUND);
+        }
+        return new CustomerResource($customer->loadMissing('purchases'));
     }
 
     /**

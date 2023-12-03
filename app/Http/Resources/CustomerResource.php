@@ -19,6 +19,7 @@ class CustomerResource extends JsonResource
                 'email'=>$this->email,
                 'phone'=>$this->phone,
                 'address'=>$this->address,
-    ];
+                'orders' =>PurchaseResource::collection($this->whenLoaded('purchases'))
+        ];
     }
 }
