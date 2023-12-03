@@ -81,6 +81,15 @@ Muestra la información del customer al que pertenece el id. Y dentro de los val
 ## Ejecución
 Para ejecutar el proyecto, en la carpeta raiz del proyecto hay que ejecutar:
 ```console
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php82-composer:latest \
+    composer install --ignore-platform-reqs
+```
+y luego:
+```console
 ./vendor/bin/sail up
 ```
 
